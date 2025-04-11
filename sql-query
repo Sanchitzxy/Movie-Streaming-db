@@ -1,0 +1,90 @@
+-- 1. Basic query to get all movies with rating above 8.5, ordered by rating
+SELECT title, release_year, imdb_rating, average_rating
+FROM content
+WHERE type = 'movie' AND average_rating > 8.5
+ORDER BY average_rating DESC;
+
+-- 2. Find all TV shows with their season count
+SELECT c.title, COUNT(s.season_id) AS number_of_seasons
+FROM content c
+LEFT JOIN seasons s ON c.content_id = s.content_id
+WHERE c.type = 'tvshow'
+GROUP BY c.content_id, c.title
+ORDER BY number_of_seasons DESC;
+
+-- 3. Get the top 10 most watched content based on viewing history
+SELECT c.title, c.type, COUNT(vh.history_id) AS view_count
+FROM content c
+JOIN viewing_history vh ON c.content_id = vh.content_id
+GROUP BY c.content_id, c.title, c.type
+ORDER BY view_count DESC
+LIMIT 10;
+
+-- 4. Get all content in a specific genre (Drama)
+SELECT c.title, c.type, c.release_year, c.average_rating
+FROM content c
+JOIN content_genres cg ON c.content_id = cg.content_id
+JOIN genres g ON cg.genre_id = g.genre_id
+WHERE g.name = 'Drama'
+ORDER BY c.average_rating DESC;
+
+-- 5. Find all actors who have worked with a specific director (Christopher Nolan)
+SELECT DISTINCT p_actor.full_name AS actor_name
+FROM people p_actor
+JOIN content_people cp_actor ON p_actor.person_id = cp_actor.person_id AND cp_actor.role = 'actor'
+JOIN content c ON cp_actor.content_id = c.content_id
+JOIN content_people cp_director ON c.content_id = cp_director.content_id AND cp_director.role = 'director'
+JOIN people p_director ON cp_director.person_id = p_director.person_id
+WHERE p_director.full_name = 'Christopher Nolan';
+
+-- 6. Calculate the average watch time per content type
+SELECT c.type, AVG(vh.watch_duration_seconds)/60.0 AS avg_watch_minutes
+FROM viewing_history vh
+JOIN content c ON vh.content_id = c.content_id
+GROUP BY c.type;
+
+-- 7. Find users who have watched content but haven't left a review
+SELECT DISTINCT u.user_id, u.email, u.first_name, u.last_name
+FROM users u
+JOIN profiles p ON u.user_id = p.user_id
+JOIN viewing_history vh ON p.profile_id = vh.profile_id
+LEFT JOIN content_reviews cr ON p.profile_id = cr.profile_id AND vh.content_id = cr.content_id
+WHERE cr.review_id IS NULL
+ORDER BY u.user_id;
+
+-- 8. Get subscription revenue by plan type
+SELECT sp.name AS plan_name, 
+       COUNT(s.subscription_id) AS subscriber_count,
+       SUM(CASE WHEN s.billing_cycle = 'monthly' THEN sp.price_monthly
+                WHEN s.billing_cycle = 'yearly' THEN sp.price_yearly/12
+                ELSE 0 END) AS monthly_revenue
+FROM subscription_plans sp
+JOIN subscriptions s ON sp.plan_id = s.plan_id
+WHERE s.status = 'active'
+GROUP BY sp.plan_id, sp.name
+ORDER BY monthly_revenue DESC;
+
+-- 9. Find the most popular devices used for streaming
+SELECT d.device_type, COUNT(vh.history_id) AS streaming_count
+FROM devices d
+JOIN viewing_history vh ON d.unique_device_id = vh.device_id
+GROUP BY d.device_type
+ORDER BY streaming_count DESC;
+
+-- 10. Get viewing activity by country
+SELECT u.country, COUNT(vh.history_id) AS view_count,
+       SUM(vh.watch_duration_seconds)/3600.0 AS total_hours_watched
+FROM users u
+JOIN profiles p ON u.user_id = p.user_id
+JOIN viewing_history vh ON p.profile_id = vh.profile_id
+WHERE u.country IS NOT NULL
+GROUP BY u.country
+ORDER BY total_hours_watched DESC;
+
+-- 11. Find content that appears in multiple users' watchlists
+SELECT c.title, c.type, COUNT(DISTINCT wi.profile_id) AS watchlist_count
+FROM content c
+JOIN watchlist_items wi ON c.content_id = wi.content_id
+GROUP BY c.content_id, c.title, c.type
+HAVING COUNT(DISTINCT wi.profile_id) > 1
+ORDER BY watchlist_count DESC;
