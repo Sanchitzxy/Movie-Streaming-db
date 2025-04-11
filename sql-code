@@ -1,6 +1,5 @@
 create database Movie_Streaming_Platform;
 Use Movie_Streaming_Platform;
-
 CREATE TABLE admins (
     admin_id SERIAL PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
@@ -278,79 +277,75 @@ CREATE INDEX idx_payment_transactions_status ON payment_transactions(status);
 CREATE INDEX idx_devices_user_id ON devices(user_id);
 CREATE INDEX idx_user_recommendations_profile_id ON user_recommendations(profile_id);
 
+INSERT INTO admins (admin_id, username, password_hash, email, first_name, last_name, role) VALUES
+(101, 'admin1', 'hashed_password_1', 'admin1@streamflix.com', 'John', 'Admin', 'super_admin'),
+(102, 'contentmgr1', 'hashed_password_2', 'content1@streamflix.com', 'Sarah', 'Content', 'content_manager'),
+(103, 'support1', 'hashed_password_3', 'support1@streamflix.com', 'Michael', 'Support', 'user_support'),
+(104, 'analyst1', 'hashed_password_4', 'analyst1@streamflix.com', 'Emma', 'Data', 'analytics'),
+(105, 'admin2', 'hashed_password_5', 'admin2@streamflix.com', 'David', 'System', 'super_admin'),
+(106, 'contentmgr2', 'hashed_password_6', 'content2@streamflix.com', 'Lisa', 'Media', 'content_manager'),
+(107, 'support2', 'hashed_password_7', 'support2@streamflix.com', 'Robert', 'Help', 'user_support'),
+(108, 'analyst2', 'hashed_password_8', 'analyst2@streamflix.com', 'Jennifer', 'Stats', 'analytics'),
+(109, 'contentmgr3', 'hashed_password_9', 'content3@streamflix.com', 'Thomas', 'Films', 'content_manager'),
+(110, 'support3', 'hashed_password_10', 'support3@streamflix.com', 'Jessica', 'Care', 'user_support');
 
-INSERT INTO admins (username, password_hash, email, first_name, last_name, role) VALUES
-('admin1', 'hashed_password_1', 'admin1@streamflix.com', 'John', 'Admin', 'super_admin'),
-('contentmgr1', 'hashed_password_2', 'content1@streamflix.com', 'Sarah', 'Content', 'content_manager'),
-('support1', 'hashed_password_3', 'support1@streamflix.com', 'Michael', 'Support', 'user_support'),
-('analyst1', 'hashed_password_4', 'analyst1@streamflix.com', 'Emma', 'Data', 'analytics'),
-('admin2', 'hashed_password_5', 'admin2@streamflix.com', 'David', 'System', 'super_admin'),
-('contentmgr2', 'hashed_password_6', 'content2@streamflix.com', 'Lisa', 'Media', 'content_manager'),
-('support2', 'hashed_password_7', 'support2@streamflix.com', 'Robert', 'Help', 'user_support'),
-('analyst2', 'hashed_password_8', 'analyst2@streamflix.com', 'Jennifer', 'Stats', 'analytics'),
-('contentmgr3', 'hashed_password_9', 'content3@streamflix.com', 'Thomas', 'Films', 'content_manager'),
-('support3', 'hashed_password_10', 'support3@streamflix.com', 'Jessica', 'Care', 'user_support');
+INSERT INTO users (user_id, email, password_hash, first_name, last_name, date_of_birth, country, phone_number, is_verified, is_active) VALUES
+(201, 'user1@example.com', 'hashed_password_1', 'Alex', 'Johnson', '1985-03-15', 'United States', '+1-555-123-4567', TRUE, TRUE),
+(202, 'user2@example.com', 'hashed_password_2', 'Maria', 'Garcia', '1990-07-22', 'Spain', '+34-555-678-9012', TRUE, TRUE),
+(203, 'user3@example.com', 'hashed_password_3', 'James', 'Smith', '1978-11-30', 'United Kingdom', '+44-555-345-6789', TRUE, TRUE),
+(204, 'user4@example.com', 'hashed_password_4', 'Sophia', 'Kim', '1995-02-18', 'South Korea', '+82-555-901-2345', TRUE, TRUE),
+(205, 'user5@example.com', 'hashed_password_5', 'Mohammed', 'Ali', '1982-09-05', 'Egypt', '+20-555-567-8901', TRUE, TRUE),
+(206, 'user6@example.com', 'hashed_password_6', 'Luisa', 'Fernandez', '1988-12-10', 'Mexico', '+52-555-234-5678', TRUE, TRUE),
+(207, 'user7@example.com', 'hashed_password_7', 'Hiroshi', 'Tanaka', '1975-06-25', 'Japan', '+81-555-890-1234', TRUE, TRUE),
+(208, 'user8@example.com', 'hashed_password_8', 'Emma', 'Wilson', '1992-04-03', 'Australia', '+61-555-456-7890', TRUE, TRUE),
+(209, 'user9@example.com', 'hashed_password_9', 'Raj', 'Patel', '1980-01-12', 'India', '+91-555-123-4567', TRUE, TRUE),
+(210, 'user10@example.com', 'hashed_password_10', 'Anna', 'Müller', '1993-08-28', 'Germany', '+49-555-678-9012', TRUE, TRUE),
+(211, 'user11@example.com', 'hashed_password_11', 'Carlos', 'Silva', '1987-05-17', 'Brazil', '+55-555-345-6789', TRUE, TRUE),
+(212, 'user12@example.com', 'hashed_password_12', 'Olga', 'Ivanova', '1991-10-09', 'Russia', '+7-555-901-2345', TRUE, TRUE),
+(213, 'user13@example.com', 'hashed_password_13', 'Chen', 'Wei', '1984-07-14', 'China', '+86-555-567-8901', TRUE, TRUE),
+(214, 'user14@example.com', 'hashed_password_14', 'Fatima', 'Ahmed', '1989-03-22', 'Saudi Arabia', '+966-555-234-5678', TRUE, TRUE),
+(215, 'user15@example.com', 'hashed_password_15', 'Pierre', 'Dubois', '1979-12-01', 'France', '+33-555-890-1234', TRUE, TRUE);
 
-INSERT INTO users (email, password_hash, first_name, last_name, date_of_birth, country, phone_number, is_verified, is_active) VALUES
-('user1@example.com', 'hashed_password_1', 'Alex', 'Johnson', '1985-03-15', 'United States', '+1-555-123-4567', TRUE, TRUE),
-('user2@example.com', 'hashed_password_2', 'Maria', 'Garcia', '1990-07-22', 'Spain', '+34-555-678-9012', TRUE, TRUE),
-('user3@example.com', 'hashed_password_3', 'James', 'Smith', '1978-11-30', 'United Kingdom', '+44-555-345-6789', TRUE, TRUE),
-('user4@example.com', 'hashed_password_4', 'Sophia', 'Kim', '1995-02-18', 'South Korea', '+82-555-901-2345', TRUE, TRUE),
-('user5@example.com', 'hashed_password_5', 'Mohammed', 'Ali', '1982-09-05', 'Egypt', '+20-555-567-8901', TRUE, TRUE),
-('user6@example.com', 'hashed_password_6', 'Luisa', 'Fernandez', '1988-12-10', 'Mexico', '+52-555-234-5678', TRUE, TRUE),
-('user7@example.com', 'hashed_password_7', 'Hiroshi', 'Tanaka', '1975-06-25', 'Japan', '+81-555-890-1234', TRUE, TRUE),
-('user8@example.com', 'hashed_password_8', 'Emma', 'Wilson', '1992-04-03', 'Australia', '+61-555-456-7890', TRUE, TRUE),
-('user9@example.com', 'hashed_password_9', 'Raj', 'Patel', '1980-01-12', 'India', '+91-555-123-4567', TRUE, TRUE),
-('user10@example.com', 'hashed_password_10', 'Anna', 'Müller', '1993-08-28', 'Germany', '+49-555-678-9012', TRUE, TRUE),
-('user11@example.com', 'hashed_password_11', 'Carlos', 'Silva', '1987-05-17', 'Brazil', '+55-555-345-6789', TRUE, TRUE),
-('user12@example.com', 'hashed_password_12', 'Olga', 'Ivanova', '1991-10-09', 'Russia', '+7-555-901-2345', TRUE, TRUE),
-('user13@example.com', 'hashed_password_13', 'Chen', 'Wei', '1984-07-14', 'China', '+86-555-567-8901', TRUE, TRUE),
-('user14@example.com', 'hashed_password_14', 'Fatima', 'Ahmed', '1989-03-22', 'Saudi Arabia', '+966-555-234-5678', TRUE, TRUE),
-('user15@example.com', 'hashed_password_15', 'Pierre', 'Dubois', '1979-12-01', 'France', '+33-555-890-1234', TRUE, TRUE);
+INSERT INTO profiles (profile_id, user_id, profile_name, avatar_url, is_kids_profile, language_preference, content_maturity_level) VALUES
+(301, 201, 'Alex', 'https://streamflix.com/avatars/avatar1.jpg', FALSE, 'en', 'adult'),
+(302, 202, 'Alex Jr', 'https://streamflix.com/avatars/kid1.jpg', TRUE, 'en', 'kids'),
+(303, 203, 'Maria', 'https://streamflix.com/avatars/avatar2.jpg', FALSE, 'es', 'adult'),
+(304, 204, 'Miguel', 'https://streamflix.com/avatars/avatar3.jpg', FALSE, 'es', 'teen'),
+(305, 205, 'James', 'https://streamflix.com/avatars/avatar4.jpg', FALSE, 'en', 'adult'),
+(306, 206, 'Sarah', 'https://streamflix.com/avatars/avatar5.jpg', FALSE, 'en', 'adult'),
+(307, 207, 'Kids', 'https://streamflix.com/avatars/kid2.jpg', TRUE, 'en', 'kids'),
+(308, 208, 'Sophia', 'https://streamflix.com/avatars/avatar6.jpg', FALSE, 'ko', 'adult'),
+(309, 209, 'Mohammed', 'https://streamflix.com/avatars/avatar7.jpg', FALSE, 'ar', 'adult'),
+(310, 210, 'Aisha', 'https://streamflix.com/avatars/avatar8.jpg', FALSE, 'ar', 'teen'),
+(311, 211, 'Luisa', 'https://streamflix.com/avatars/avatar9.jpg', FALSE, 'es', 'adult'),
+(312, 212, 'Hiroshi', 'https://streamflix.com/avatars/avatar10.jpg', FALSE, 'ja', 'adult'),
+(313, 213, 'Yuki', 'https://streamflix.com/avatars/avatar11.jpg', FALSE, 'ja', 'adult'),
+(314, 214, 'Emma', 'https://streamflix.com/avatars/avatar12.jpg', FALSE, 'en', 'adult'),
+(315, 215, 'Raj', 'https://streamflix.com/avatars/avatar13.jpg', FALSE, 'hi', 'adult'),
+(316, 216, 'Priya', 'https://streamflix.com/avatars/avatar14.jpg', FALSE, 'hi', 'adult'),
+(317, 217, 'Kids', 'https://streamflix.com/avatars/kid3.jpg', TRUE, 'hi', 'kids'),
+(318, 218, 'Anna', 'https://streamflix.com/avatars/avatar15.jpg', FALSE, 'de', 'adult'),
+(319, 219, 'Carlos', 'https://streamflix.com/avatars/avatar16.jpg', FALSE, 'pt', 'adult'),
+(320, 220, 'Olga', 'https://streamflix.com/avatars/avatar17.jpg', FALSE, 'ru', 'adult'),
+(321, 221, 'Chen', 'https://streamflix.com/avatars/avatar18.jpg', FALSE, 'zh', 'adult'),
+(322, 222, 'Fatima', 'https://streamflix.com/avatars/avatar19.jpg', FALSE, 'ar', 'adult'),
+(323, 223, 'Pierre', 'https://streamflix.com/avatars/avatar20.jpg', FALSE, 'fr', 'adult'),
+(324, 224, 'Marie', 'https://streamflix.com/avatars/avatar21.jpg', FALSE, 'fr', 'adult'),
+(325, 225, 'Enfants', 'https://streamflix.com/avatars/kid4.jpg', TRUE, 'fr', 'kids');
 
-INSERT INTO profiles (user_id, profile_name, avatar_url, is_kids_profile, language_preference, content_maturity_level) VALUES
-(101, 'Alex', 'https://streamflix.com/avatars/avatar1.jpg', FALSE, 'en', 'adult'),
-(101, 'Alex Jr', 'https://streamflix.com/avatars/kid1.jpg', TRUE, 'en', 'kids'),
-(102, 'Maria', 'https://streamflix.com/avatars/avatar2.jpg', FALSE, 'es', 'adult'),
-(102, 'Miguel', 'https://streamflix.com/avatars/avatar3.jpg', FALSE, 'es', 'teen'),
-(103, 'James', 'https://streamflix.com/avatars/avatar4.jpg', FALSE, 'en', 'adult'),
-(103, 'Sarah', 'https://streamflix.com/avatars/avatar5.jpg', FALSE, 'en', 'adult'),
-(103, 'Kids', 'https://streamflix.com/avatars/kid2.jpg', TRUE, 'en', 'kids'),
-(104, 'Sophia', 'https://streamflix.com/avatars/avatar6.jpg', FALSE, 'ko', 'adult'),
-(105, 'Mohammed', 'https://streamflix.com/avatars/avatar7.jpg', FALSE, 'ar', 'adult'),
-(105, 'Aisha', 'https://streamflix.com/avatars/avatar8.jpg', FALSE, 'ar', 'teen'),
-(106, 'Luisa', 'https://streamflix.com/avatars/avatar9.jpg', FALSE, 'es', 'adult'),
-(107, 'Hiroshi', 'https://streamflix.com/avatars/avatar10.jpg', FALSE, 'ja', 'adult'),
-(107, 'Yuki', 'https://streamflix.com/avatars/avatar11.jpg', FALSE, 'ja', 'adult'),
-(108, 'Emma', 'https://streamflix.com/avatars/avatar12.jpg', FALSE, 'en', 'adult'),
-(109, 'Raj', 'https://streamflix.com/avatars/avatar13.jpg', FALSE, 'hi', 'adult'),
-(109, 'Priya', 'https://streamflix.com/avatars/avatar14.jpg', FALSE, 'hi', 'adult'),
-(109, 'Kids', 'https://streamflix.com/avatars/kid3.jpg', TRUE, 'hi', 'kids'),
-(110, 'Anna', 'https://streamflix.com/avatars/avatar15.jpg', FALSE, 'de', 'adult'),
-(111, 'Carlos', 'https://streamflix.com/avatars/avatar16.jpg', FALSE, 'pt', 'adult'),
-(112, 'Olga', 'https://streamflix.com/avatars/avatar17.jpg', FALSE, 'ru', 'adult'),
-(113, 'Chen', 'https://streamflix.com/avatars/avatar18.jpg', FALSE, 'zh', 'adult'),
-(114, 'Fatima', 'https://streamflix.com/avatars/avatar19.jpg', FALSE, 'ar', 'adult'),
-(115, 'Pierre', 'https://streamflix.com/avatars/avatar20.jpg', FALSE, 'fr', 'adult'),
-(115, 'Marie', 'https://streamflix.com/avatars/avatar21.jpg', FALSE, 'fr', 'adult'),
-(115, 'Enfants', 'https://streamflix.com/avatars/kid4.jpg', TRUE, 'fr', 'kids');
-
-INSERT INTO people (full_name, birth_date, biography, nationality, profile_image_url, imdb_id) VALUES
-('Tom Hanks', '1956-07-09', 'Thomas Jeffrey Hanks is an American actor and filmmaker.', 'American', 'https://streamflix.com/people/tomhanks.jpg', 'nm0000158'),
-('Meryl Streep', '1949-06-22', 'Mary Louise "Meryl" Streep is an American actress.', 'American', 'https://streamflix.com/people/merylstreep.jpg', 'nm0000658'),
-('Leonardo DiCaprio', '1974-11-11', 'Leonardo Wilhelm DiCaprio is an American actor and film producer.', 'American', 'https://streamflix.com/people/leonardodicaprio.jpg', 'nm0000138'),
-('Christopher Nolan', '1970-07-30', 'Christopher Edward Nolan is a British-American film director, producer, and screenwriter.', 'British-American', 'https://streamflix.com/people/christophernolan.jpg', 'nm0634240'),
-('Scarlett Johansson', '1984-11-22', 'Scarlett Ingrid Johansson is an American actress and singer.', 'American', 'https://streamflix.com/people/scarlettjohansson.jpg', 'nm0424060'),
-('Steven Spielberg', '1946-12-18', 'Steven Allan Spielberg is an American filmmaker.', 'American', 'https://streamflix.com/people/stevenspielberg.jpg', 'nm0000229'),
-('Emma Stone', '1988-11-06', 'Emily Jean "Emma" Stone is an American actress.', 'American', 'https://streamflix.com/people/emmastone.jpg', 'nm1297015'),
-('Denzel Washington', '1954-12-28', 'Denzel Hayes Washington Jr. is an American actor, director, and producer.', 'American', 'https://streamflix.com/people/denzelwashington.jpg', 'nm0000243'),
-('Viola Davis', '1965-08-11', 'Viola Davis is an American actress and producer.', 'American', 'https://streamflix.com/people/violadavis.jpg', 'nm0205626'),
-('Ryan Coogler', '1986-05-23', 'Ryan Kyle Coogler is an American film director, producer, and screenwriter.', 'American', 'https://streamflix.com/people/ryancoogler.jpg', 'nm3363032'),
-('Chadwick Boseman', '1976-11-29', 'Chadwick Aaron Boseman was an American actor and playwright.', 'American', 'https://streamflix.com/people/chadwickboseman.jpg', 'nm1569276'),
-('Bong Joon-ho', '1969-09-14', 'Bong Joon-ho is a South Korean film director, producer and screenwriter.', 'South Korean', 'https://streamflix.com/people/bongjoonho.jpg', 'nm0094435'),
-('Greta Gerwig', '1983-08-04', 'Greta Celeste Gerwig is an American actress, screenwriter, and director.', 'American', 'https://streamflix.com/people/gretagerwig.jpg', 'nm1950086'),
-('Saoirse Ronan', '1994-04-12', 'Saoirse Una Ronan is an Irish and American actress.', 'Irish-American', 'https://streamflix.com/people/saoirseronan.jpg', 'nm1519680'),
-('Timothée Chalamet', '1995-12-27', 'Timothée Hal Chalamet is an American actor.', 'American', 'https://streamflix.com/people/timotheechalamet.jpg', 'nm3154303');
+INSERT INTO people (person_id, full_name, birth_date, biography, nationality, profile_image_url, imdb_id) VALUES
+(401, 'Tom Hanks', '1956-07-09', 'Thomas Jeffrey Hanks is an American actor and filmmaker.', 'American', 'https://streamflix.com/people/tomhanks.jpg', 'nm0000158'),
+(402, 'Meryl Streep', '1949-06-22', 'Mary Louise "Meryl" Streep is an American actress.', 'American', 'https://streamflix.com/people/merylstreep.jpg', 'nm0000658'),
+(403, 'Leonardo DiCaprio', '1974-11-11', 'Leonardo Wilhelm DiCaprio is an American actor and film producer.', 'American', 'https://streamflix.com/people/leonardodicaprio.jpg', 'nm0000138'),
+(404, 'Christopher Nolan', '1970-07-30', 'Christopher Edward Nolan is a British-American film director, producer, and screenwriter.', 'British-American', 'https://streamflix.com/people/christophernolan.jpg', 'nm0634240'),
+(405, 'Scarlett Johansson', '1984-11-22', 'Scarlett Ingrid Johansson is an American actress and singer.', 'American', 'https://streamflix.com/people/scarlettjohansson.jpg', 'nm0424060'),
+(406, 'Steven Spielberg', '1946-12-18', 'Steven Allan Spielberg is an American filmmaker.', 'American', 'https://streamflix.com/people/stevenspielberg.jpg', 'nm0000229'),
+(407, 'Emma Stone', '1988-11-06', 'Emily Jean "Emma" Stone is an American actress.', 'American', 'https://streamflix.com/people/emmastone.jpg', 'nm1297015'),
+(408, 'Denzel Washington', '1954-12-28', 'Denzel Hayes Washington Jr. is an American actor, director, and producer.', 'American', 'https://streamflix.com/people/denzelwashington.jpg', 'nm0000243'),
+(409, 'Viola Davis', '1965-08-11', 'Viola Davis is an American actress and producer.', 'American', 'https://streamflix.com/people/violadavis.jpg', 'nm0205626'),
+(410, 'Ryan Coogler', '1986-05-23', 'Ryan Kyle Coogler is an American film director, producer, and screenwriter.', 'American', 'https://streamflix.com/people/ryancoogler.jpg', 'nm3363032'),
+(411, 'Chadwick Boseman', '1976-11-29', 'Chadwick Aaron Boseman was an American actor and playwright.', 'American', 'https://streamflix.com/people/chadwickboseman.jpg', 'nm1569276'),
+(412, 'Bong Joon-ho', '1969-09-14', 'Bong Joon-ho is a South Korean film director, producer and screenwriter.', 'South Korean', 'https://streamflix.com/people/bongjoonho.jpg', 'nm0094435');
 
 INSERT INTO genres (name, description) VALUES
 ('Action', 'Action films usually include high energy, big-budget physical stunts and chases, possibly with rescues, battles, fights, escapes, destructive crises, etc.'),
@@ -369,90 +364,90 @@ INSERT INTO genres (name, description) VALUES
 ('Biography', 'A biographical film, or biopic, is a film that dramatizes the life of a non-fictional or historically-based person or people.'),
 ('History', 'A historical film is a fiction film showing past events or set within a historical period.');
 
+INSERT INTO content (content_id, title, type, description, release_year, age_rating, duration_minutes, poster_url, backdrop_url, trailer_url, imdb_rating, average_rating, total_ratings, featured, is_original, available_from) VALUES
+(101, 'The Shawshank Redemption', 'movie', 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.', 1994, 'R', 142, 'https://streamflix.com/posters/shawshank.jpg', 'https://streamflix.com/backdrops/shawshank.jpg', 'https://streamflix.com/trailers/shawshank.mp4', 9.3, 9.2, 1250, TRUE, FALSE, '2020-01-01'),
+(102, 'Inception', 'movie', 'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.', 2010, 'PG-13', 148, 'https://streamflix.com/posters/inception.jpg', 'https://streamflix.com/backdrops/inception.jpg', 'https://streamflix.com/trailers/inception.mp4', 8.8, 8.7, 980, TRUE, FALSE, '2020-01-01'),
+(103, 'The Dark Knight', 'movie', 'When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.', 2008, 'PG-13', 152, 'https://streamflix.com/posters/darkknight.jpg', 'https://streamflix.com/backdrops/darkknight.jpg', 'https://streamflix.com/trailers/darkknight.mp4', 9.0, 8.9, 1100, TRUE, FALSE, '2020-01-01'),
+(104, 'Pulp Fiction', 'movie', 'The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.', 1994, 'R', 154, 'https://streamflix.com/posters/pulpfiction.jpg', 'https://streamflix.com/backdrops/pulpfiction.jpg', 'https://streamflix.com/trailers/pulpfiction.mp4', 8.9, 8.8, 950, FALSE, FALSE, '2020-01-01'),
+(105, 'The Matrix', 'movie', 'A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.', 1999, 'R', 136, 'https://streamflix.com/posters/matrix.jpg', 'https://streamflix.com/backdrops/matrix.jpg', 'https://streamflix.com/trailers/matrix.mp4', 8.7, 8.6, 890, FALSE, FALSE, '2020-01-01'),
+(106, 'Parasite', 'movie', 'Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.', 2019, 'R', 132, 'https://streamflix.com/posters/parasite.jpg', 'https://streamflix.com/backdrops/parasite.jpg', 'https://streamflix.com/trailers/parasite.mp4', 8.6, 8.5, 780, TRUE, FALSE, '2020-06-01'),
+(107, 'Stranger Things', 'tvshow', 'When a young boy disappears, his mother, a police chief, and his friends must confront terrifying supernatural forces in order to get him back.', 2016, 'TV-14', NULL, 'https://streamflix.com/posters/strangerthings.jpg', 'https://streamflix.com/backdrops/strangerthings.jpg', 'https://streamflix.com/trailers/strangerthings.mp4', 8.7, 8.6, 1050, TRUE, TRUE, '2016-07-15'),
+(108, 'Breaking Bad', 'tvshow', 'A high school chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine in order to secure his family\'s future.', 2008, 'TV-MA', NULL, 'https://streamflix.com/posters/breakingbad.jpg', 'https://streamflix.com/backdrops/breakingbad.jpg', 'https://streamflix.com/trailers/breakingbad.mp4', 9.5, 9.4, 1200, TRUE, FALSE, '2020-01-01'),
+(109, 'The Crown', 'tvshow', 'Follows the political rivalries and romance of Queen Elizabeth II\'s reign and the events that shaped the second half of the twentieth century.', 2016, 'TV-MA', NULL, 'https://streamflix.com/posters/crown.jpg', 'https://streamflix.com/backdrops/crown.jpg', 'https://streamflix.com/trailers/crown.mp4', 8.7, 8.6, 820, TRUE, TRUE, '2016-11-04'),
+(110, 'Black Mirror', 'tvshow', 'An anthology series exploring a twisted, high-tech multiverse where humanity\'s greatest innovations and darkest instincts collide.', 2011, 'TV-MA', NULL, 'https://streamflix.com/posters/blackmirror.jpg', 'https://streamflix.com/backdrops/blackmirror.jpg', 'https://streamflix.com/trailers/blackmirror.mp4', 8.8, 8.7, 950, FALSE, TRUE, '2020-01-01'),
+(111, 'Little Women', 'movie', 'Jo March reflects back and forth on her life, telling the beloved story of the March sisters - four young women, each determined to live life on her own terms.', 2019, 'PG', 135, 'https://streamflix.com/posters/littlewomen.jpg', 'https://streamflix.com/backdrops/littlewomen.jpg', 'https://streamflix.com/trailers/littlewomen.mp4', 7.8, 7.9, 650, FALSE, FALSE, '2020-04-01'),
+(112, 'The Mandalorian', 'tvshow', 'The travels of a lone bounty hunter in the outer reaches of the galaxy, far from the authority of the New Republic.', 2019, 'TV-14', NULL, 'https://streamflix.com/posters/mandalorian.jpg', 'https://streamflix.com/backdrops/mandalorian.jpg', 'https://streamflix.com/trailers/mandalorian.mp4', 8.8, 8.7, 890, TRUE, FALSE, '2020-03-01'),
+(113, 'Black Panther', 'movie', 'T\'Challa, heir to the hidden but advanced kingdom of Wakanda, must step forward to lead his people into a new future and must confront a challenger from his country\'s past.', 2018, 'PG-13', 134, 'https://streamflix.com/posters/blackpanther.jpg', 'https://streamflix.com/backdrops/blackpanther.jpg', 'https://streamflix.com/trailers/blackpanther.mp4', 7.3, 7.5, 780, TRUE, FALSE, '2020-01-01'),
+(114, 'The Queen\'s Gambit', 'tvshow', 'Orphaned at the tender age of nine, prodigious introvert Beth Harmon discovers and masters the game of chess in 1960s USA. But child stardom comes at a price.', 2020, 'TV-MA', NULL, 'https://streamflix.com/posters/queensgambit.jpg', 'https://streamflix.com/backdrops/queensgambit.jpg', 'https://streamflix.com/trailers/queensgambit.mp4', 8.6, 8.7, 720, TRUE, TRUE, '2020-10-23'),
+(115, 'Interstellar', 'movie', 'A team of explorers travel through a wormhole in space in an attempt to ensure humanity\'s survival.', 2014, 'PG-13', 169, 'https://streamflix.com/posters/interstellar.jpg', 'https://streamflix.com/backdrops/interstellar.jpg', 'https://streamflix.com/trailers/interstellar.mp4', 8.6, 8.5, 910, FALSE, FALSE, '2020-01-01');
 
-INSERT INTO content (title, type, description, release_year, age_rating, duration_minutes, poster_url, backdrop_url, trailer_url, imdb_rating, average_rating, total_ratings, featured, is_original, available_from) VALUES
-('The Shawshank Redemption', 'movie', 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.', 1994, 'R', 142, 'https://streamflix.com/posters/shawshank.jpg', 'https://streamflix.com/backdrops/shawshank.jpg', 'https://streamflix.com/trailers/shawshank.mp4', 9.3, 9.2, 1250, TRUE, FALSE, '2020-01-01'),
-('Inception', 'movie', 'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.', 2010, 'PG-13', 148, 'https://streamflix.com/posters/inception.jpg', 'https://streamflix.com/backdrops/inception.jpg', 'https://streamflix.com/trailers/inception.mp4', 8.8, 8.7, 980, TRUE, FALSE, '2020-01-01'),
-('The Dark Knight', 'movie', 'When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.', 2008, 'PG-13', 152, 'https://streamflix.com/posters/darkknight.jpg', 'https://streamflix.com/backdrops/darkknight.jpg', 'https://streamflix.com/trailers/darkknight.mp4', 9.0, 8.9, 1100, TRUE, FALSE, '2020-01-01'),
-('Pulp Fiction', 'movie', 'The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.', 1994, 'R', 154, 'https://streamflix.com/posters/pulpfiction.jpg', 'https://streamflix.com/backdrops/pulpfiction.jpg', 'https://streamflix.com/trailers/pulpfiction.mp4', 8.9, 8.8, 950, FALSE, FALSE, '2020-01-01'),
-('The Matrix', 'movie', 'A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.', 1999, 'R', 136, 'https://streamflix.com/posters/matrix.jpg', 'https://streamflix.com/backdrops/matrix.jpg', 'https://streamflix.com/trailers/matrix.mp4', 8.7, 8.6, 890, FALSE, FALSE, '2020-01-01'),
-('Parasite', 'movie', 'Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.', 2019, 'R', 132, 'https://streamflix.com/posters/parasite.jpg', 'https://streamflix.com/backdrops/parasite.jpg', 'https://streamflix.com/trailers/parasite.mp4', 8.6, 8.5, 780, TRUE, FALSE, '2020-06-01'),
-('Stranger Things', 'tvshow', 'When a young boy disappears, his mother, a police chief, and his friends must confront terrifying supernatural forces in order to get him back.', 2016, 'TV-14', NULL, 'https://streamflix.com/posters/strangerthings.jpg', 'https://streamflix.com/backdrops/strangerthings.jpg', 'https://streamflix.com/trailers/strangerthings.mp4', 8.7, 8.6, 1050, TRUE, TRUE, '2016-07-15'),
-('Breaking Bad', 'tvshow', 'A high school chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine in order to secure his family\'s future.', 2008, 'TV-MA', NULL, 'https://streamflix.com/posters/breakingbad.jpg', 'https://streamflix.com/backdrops/breakingbad.jpg', 'https://streamflix.com/trailers/breakingbad.mp4', 9.5, 9.4, 1200, TRUE, FALSE, '2020-01-01'),
-('The Crown', 'tvshow', 'Follows the political rivalries and romance of Queen Elizabeth II\'s reign and the events that shaped the second half of the twentieth century.', 2016, 'TV-MA', NULL, 'https://streamflix.com/posters/crown.jpg', 'https://streamflix.com/backdrops/crown.jpg', 'https://streamflix.com/trailers/crown.mp4', 8.7, 8.6, 820, TRUE, TRUE, '2016-11-04'),
-('Black Mirror', 'tvshow', 'An anthology series exploring a twisted, high-tech multiverse where humanity\'s greatest innovations and darkest instincts collide.', 2011, 'TV-MA', NULL, 'https://streamflix.com/posters/blackmirror.jpg', 'https://streamflix.com/backdrops/blackmirror.jpg', 'https://streamflix.com/trailers/blackmirror.mp4', 8.8, 8.7, 950, FALSE, TRUE, '2020-01-01'),
-('Little Women', 'movie', 'Jo March reflects back and forth on her life, telling the beloved story of the March sisters - four young women, each determined to live life on her own terms.', 2019, 'PG', 135, 'https://streamflix.com/posters/littlewomen.jpg', 'https://streamflix.com/backdrops/littlewomen.jpg', 'https://streamflix.com/trailers/littlewomen.mp4', 7.8, 7.9, 650, FALSE, FALSE, '2020-04-01'),
-('The Mandalorian', 'tvshow', 'The travels of a lone bounty hunter in the outer reaches of the galaxy, far from the authority of the New Republic.', 2019, 'TV-14', NULL, 'https://streamflix.com/posters/mandalorian.jpg', 'https://streamflix.com/backdrops/mandalorian.jpg', 'https://streamflix.com/trailers/mandalorian.mp4', 8.8, 8.7, 890, TRUE, FALSE, '2020-03-01'),
-('Black Panther', 'movie', 'T\'Challa, heir to the hidden but advanced kingdom of Wakanda, must step forward to lead his people into a new future and must confront a challenger from his country\'s past.', 2018, 'PG-13', 134, 'https://streamflix.com/posters/blackpanther.jpg', 'https://streamflix.com/backdrops/blackpanther.jpg', 'https://streamflix.com/trailers/blackpanther.mp4', 7.3, 7.5, 780, TRUE, FALSE, '2020-01-01'),
-('The Queen\'s Gambit', 'tvshow', 'Orphaned at the tender age of nine, prodigious introvert Beth Harmon discovers and masters the game of chess in 1960s USA. But child stardom comes at a price.', 2020, 'TV-MA', NULL, 'https://streamflix.com/posters/queensgambit.jpg', 'https://streamflix.com/backdrops/queensgambit.jpg', 'https://streamflix.com/trailers/queensgambit.mp4', 8.6, 8.7, 720, TRUE, TRUE, '2020-10-23'),
-('Interstellar', 'movie', 'A team of explorers travel through a wormhole in space in an attempt to ensure humanity\'s survival.', 2014, 'PG-13', 169, 'https://streamflix.com/posters/interstellar.jpg', 'https://streamflix.com/backdrops/interstellar.jpg', 'https://streamflix.com/trailers/interstellar.mp4', 8.6, 8.5, 910, FALSE, FALSE, '2020-01-01');
+INSERT INTO seasons (season_id, content_id, season_number, title, overview, release_date, poster_url, episode_count) VALUES
+(101, 107, 1, 'Stranger Things: Season 1', 'When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces and one strange little girl.', '2016-07-15', 'https://streamflix.com/seasons/strangerthings_s1.jpg', 8),
+(102, 107, 2, 'Stranger Things: Season 2', 'It\'s been nearly a year since Will\'s strange disappearance. But life\'s hardly back to normal in Hawkins. Not even close.', '2017-10-27', 'https://streamflix.com/seasons/strangerthings_s2.jpg', 9),
+(103, 107, 3, 'Stranger Things: Season 3', 'Summer brings new jobs and budding romance. But the mood shifts when Dustin\'s radio picks up a Russian broadcast, and Will senses something is wrong.', '2019-07-04', 'https://streamflix.com/seasons/strangerthings_s3.jpg', 8),
+(104, 108, 1, 'Breaking Bad: Season 1', 'A high school chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine in order to secure his family\'s future.', '2008-01-20', 'https://streamflix.com/seasons/breakingbad_s1.jpg', 7),
+(105, 108, 2, 'Breaking Bad: Season 2', 'Walt and Jesse face the deadly consequences of their actions, both personally and professionally, as they try to cope with the mess they created.', '2009-03-08', 'https://streamflix.com/seasons/breakingbad_s2.jpg', 13),
+(106, 108, 3, 'Breaking Bad: Season 3', 'Walt continues to battle dueling identities: a desperate husband and father trying to provide for his family, and a newly appointed key player in the Albuquerque drug trade.', '2010-03-21', 'https://streamflix.com/seasons/breakingbad_s3.jpg', 13),
+(107, 108, 4, 'Breaking Bad: Season 4', 'Walt and Jesse face the deadly consequences of their actions, both personally and professionally, as they try to cope with the mess they created.', '2011-07-17', 'https://streamflix.com/seasons/breakingbad_s4.jpg', 13),
+(108, 108, 5, 'Breaking Bad: Season 5', 'Walt\'s transformation from well-meaning family man to ruthless drug kingpin is complete.', '2012-07-15', 'https://streamflix.com/seasons/breakingbad_s5.jpg', 16),
+(109, 109, 1, 'The Crown: Season 1', 'As a young Elizabeth becomes Queen, she must manage major political issues and personal matters, which often clash in ways she never imagined.', '2016-11-04', 'https://streamflix.com/seasons/crown_s1.jpg', 10),
+(110, 109, 2, 'The Crown: Season 2', 'As a new era begins, Queen Elizabeth struggles to navigate a world that\'s changing around her while preserving both the monarchy and her marriage.', '2017-12-08', 'https://streamflix.com/seasons/crown_s2.jpg', 10),
+(111, 109, 3, 'The Crown: Season 3', 'As the 1960s and \'70s unfold, the royal family contends with conflict and betrayal while striving to uphold tradition in the face of an evolving world.', '2019-11-17', 'https://streamflix.com/seasons/crown_s3.jpg', 10),
+(112, 110, 1, 'Black Mirror: Season 1', 'This sci-fi anthology series explores a twisted, high-tech near-future where humanity\'s greatest innovations and darkest instincts collide.', '2011-12-04', 'https://streamflix.com/seasons/blackmirror_s1.jpg', 3),
+(113, 110, 2, 'Black Mirror: Season 2', 'This sci-fi anthology series explores a twisted, high-tech near-future where humanity\'s greatest innovations and darkest instincts collide.', '2013-02-11', 'https://streamflix.com/seasons/blackmirror_s2.jpg', 3),
+(114, 110, 3, 'Black Mirror: Season 3', 'This sci-fi anthology series explores a twisted, high-tech near-future where humanity\'s greatest innovations and darkest instincts collide.', '2016-10-21', 'https://streamflix.com/seasons/blackmirror_s3.jpg', 6),
+(115, 110, 4, 'Black Mirror: Season 4', 'This sci-fi anthology series explores a twisted, high-tech near-future where humanity\'s greatest innovations and darkest instincts collide.', '2017-12-29', 'https://streamflix.com/seasons/blackmirror_s4.jpg', 6),
+(116, 112, 1, 'The Mandalorian: Season 1', 'After the fall of the Empire, a lone gunfighter makes his way through the lawless galaxy with his foundling.', '2019-11-12', 'https://streamflix.com/seasons/mandalorian_s1.jpg', 8),
+(117, 112, 2, 'The Mandalorian: Season 2', 'The Mandalorian and the Child continue their journey, facing enemies and rallying allies as they make their way through a dangerous galaxy.', '2020-10-30', 'https://streamflix.com/seasons/mandalorian_s2.jpg', 8),
+(118, 114, 1, 'The Queen\'s Gambit', 'In a 1950s orphanage, a young girl reveals an astonishing talent for chess and begins an unlikely journey to stardom while grappling with addiction.', '2020-10-23', 'https://streamflix.com/seasons/queensgambit_s1.jpg', 7);
 
-INSERT INTO seasons (content_id, season_number, title, overview, release_date, poster_url, episode_count) VALUES
-(107, 1, 'Stranger Things: Season 1', 'When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces and one strange little girl.', '2016-07-15', 'https://streamflix.com/seasons/strangerthings_s1.jpg', 8),
-(107, 2, 'Stranger Things: Season 2', 'It\'s been nearly a year since Will\'s strange disappearance. But life\'s hardly back to normal in Hawkins. Not even close.', '2017-10-27', 'https://streamflix.com/seasons/strangerthings_s2.jpg', 9),
-(107, 3, 'Stranger Things: Season 3', 'Summer brings new jobs and budding romance. But the mood shifts when Dustin\'s radio picks up a Russian broadcast, and Will senses something is wrong.', '2019-07-04', 'https://streamflix.com/seasons/strangerthings_s3.jpg', 8),
-(108, 1, 'Breaking Bad: Season 1', 'A high school chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine in order to secure his family\'s future.', '2008-01-20', 'https://streamflix.com/seasons/breakingbad_s1.jpg', 7),
-(108, 2, 'Breaking Bad: Season 2', 'Walt and Jesse face the deadly consequences of their actions, both personally and professionally, as they try to cope with the mess they created.', '2009-03-08', 'https://streamflix.com/seasons/breakingbad_s2.jpg', 13),
-(108, 3, 'Breaking Bad: Season 3', 'Walt continues to battle dueling identities: a desperate husband and father trying to provide for his family, and a newly appointed key player in the Albuquerque drug trade.', '2010-03-21', 'https://streamflix.com/seasons/breakingbad_s3.jpg', 13),
-(108, 4, 'Breaking Bad: Season 4', 'Walt and Jesse face the deadly consequences of their actions, both personally and professionally, as they try to cope with the mess they created.', '2011-07-17', 'https://streamflix.com/seasons/breakingbad_s4.jpg', 13),
-(108, 5, 'Breaking Bad: Season 5', 'Walt\'s transformation from well-meaning family man to ruthless drug kingpin is complete.', '2012-07-15', 'https://streamflix.com/seasons/breakingbad_s5.jpg', 16),
-(109, 1, 'The Crown: Season 1', 'As a young Elizabeth becomes Queen, she must manage major political issues and personal matters, which often clash in ways she never imagined.', '2016-11-04', 'https://streamflix.com/seasons/crown_s1.jpg', 10),
-(109, 2, 'The Crown: Season 2', 'As a new era begins, Queen Elizabeth struggles to navigate a world that\'s changing around her while preserving both the monarchy and her marriage.', '2017-12-08', 'https://streamflix.com/seasons/crown_s2.jpg', 10),
-(109, 3, 'The Crown: Season 3', 'As the 1960s and \'70s unfold, the royal family contends with conflict and betrayal while striving to uphold tradition in the face of an evolving world.', '2019-11-17', 'https://streamflix.com/seasons/crown_s3.jpg', 10),
-(110, 1, 'Black Mirror: Season 1', 'This sci-fi anthology series explores a twisted, high-tech near-future where humanity\'s greatest innovations and darkest instincts collide.', '2011-12-04', 'https://streamflix.com/seasons/blackmirror_s1.jpg', 3),
-(110, 2, 'Black Mirror: Season 2', 'This sci-fi anthology series explores a twisted, high-tech near-future where humanity\'s greatest innovations and darkest instincts collide.', '2013-02-11', 'https://streamflix.com/seasons/blackmirror_s2.jpg', 3),
-(110, 3, 'Black Mirror: Season 3', 'This sci-fi anthology series explores a twisted, high-tech near-future where humanity\'s greatest innovations and darkest instincts collide.', '2016-10-21', 'https://streamflix.com/seasons/blackmirror_s3.jpg', 6),
-(110, 4, 'Black Mirror: Season 4', 'This sci-fi anthology series explores a twisted, high-tech near-future where humanity\'s greatest innovations and darkest instincts collide.', '2017-12-29', 'https://streamflix.com/seasons/blackmirror_s4.jpg', 6),
-(112, 1, 'The Mandalorian: Season 1', 'After the fall of the Empire, a lone gunfighter makes his way through the lawless galaxy with his foundling.', '2019-11-12', 'https://streamflix.com/seasons/mandalorian_s1.jpg', 8),
-(112, 2, 'The Mandalorian: Season 2', 'The Mandalorian and the Child continue their journey, facing enemies and rallying allies as they make their way through a dangerous galaxy.', '2020-10-30', 'https://streamflix.com/seasons/mandalorian_s2.jpg', 8),
-(114, 1, 'The Queen\'s Gambit', 'In a 1950s orphanage, a young girl reveals an astonishing talent for chess and begins an unlikely journey to stardom while grappling with addiction.', '2020-10-23', 'https://streamflix.com/seasons/queensgambit_s1.jpg', 7);
-
-INSERT INTO episodes (season_id, episode_number, title, description, duration_minutes, thumbnail_url, release_date) VALUES
-(101, 1, 'Chapter One: The Vanishing of Will Byers', 'On his way home from a friend\'s house, young Will sees something terrifying. Nearby, a sinister secret lurks in the depths of a government lab.', 49, 'https://streamflix.com/episodes/st_s1e1.jpg', '2016-07-15'),
-(101, 2, 'Chapter Two: The Weirdo on Maple Street', 'Lucas, Mike and Dustin try to talk to the girl they found in the woods. Hopper questions an anxious Joyce about an unsettling phone call.', 46, 'https://streamflix.com/episodes/st_s1e2.jpg', '2016-07-15'),
-(101, 3, 'Chapter Three: Holly, Jolly', 'An increasingly concerned Nancy looks for Barb and finds out what Jonathan\'s been up to. Joyce is convinced Will is trying to talk to her.', 52, 'https://streamflix.com/episodes/st_s1e3.jpg', '2016-07-15'),
-(102, 1, 'Chapter One: MADMAX', 'As the town preps for Halloween, a high-scoring rival shakes things up at the arcade, and a skeptical Hopper inspects a field of rotting pumpkins.', 48, 'https://streamflix.com/episodes/st_s2e1.jpg', '2017-10-27'),
-(102, 2, 'Chapter Two: Trick or Treat, Freak', 'After Will sees something terrible on trick-or-treat night, Mike wonders whether Eleven\'s still out there. Nancy wrestles with the truth about Barb.', 56, 'https://streamflix.com/episodes/st_s2e2.jpg', '2017-10-27'),
-(104, 1, 'Pilot', 'Diagnosed with terminal lung cancer, chemistry teacher Walter White teams up with former student Jesse Pinkman to cook and sell crystal meth.', 58, 'https://streamflix.com/episodes/bb_s1e1.jpg', '2008-01-20'),
-(104, 2, 'Cat\'s in the Bag...', 'After their first drug deal goes terribly wrong, Walt and Jesse are forced to deal with a corpse and a prisoner. Meanwhile, Skyler grows suspicious.', 48, 'https://streamflix.com/episodes/bb_s1e2.jpg', '2008-01-27'),
-(109, 1, 'Wolferton Splash', 'A young Princess Elizabeth marries Prince Philip. As King George VI\'s health worsens, Winston Churchill is elected prime minister for the second time.', 57, 'https://streamflix.com/episodes/crown_s1e1.jpg', '2016-11-04'),
-(109, 2, 'Hyde Park Corner', 'With King George too ill to travel, Elizabeth and Philip embark on a four-continent Commonwealth tour. Party leaders attempt to undermine Churchill.', 61, 'https://streamflix.com/episodes/crown_s1e2.jpg', '2016-11-04'),
-(112, 1, 'The National Anthem', 'Prime Minister Michael Callow faces a shocking dilemma when Princess Susannah, a much-loved member of the Royal Family, is kidnapped.', 44, 'https://streamflix.com/episodes/bm_s1e1.jpg', '2011-12-04'),
-(116, 1, 'Chapter 1', 'In a Kentucky orphanage in the 1950s, a young girl discovers an astonishing talent for chess while struggling with addiction.', 60, 'https://streamflix.com/episodes/qg_s1e1.jpg', '2020-10-23'),
-(116, 2, 'Chapter 2', 'Sent to an orphanage at age 9, Beth develops an uncanny knack for chess and a growing dependence on the green tranquilizers given to the children.', 60, 'https://streamflix.com/episodes/qg_s1e2.jpg', '2020-10-23'),
-(117, 1, 'Chapter One: The Mandalorian', 'A Mandalorian bounty hunter tracks a target for a well-paying client.', 39, 'https://streamflix.com/episodes/mando_s1e1.jpg', '2019-11-12'),
-(117, 2, 'Chapter Two: The Child', 'Target in-hand, The Mandalorian must now contend with scavengers.', 32, 'https://streamflix.com/episodes/mando_s1e2.jpg', '2019-11-15');
+INSERT INTO episodes (episode_id, season_id, episode_number, title, description, duration_minutes, thumbnail_url, release_date) VALUES
+(101, 101, 1, 'Chapter One: The Vanishing of Will Byers', 'On his way home from a friend\'s house, young Will sees something terrifying. Nearby, a sinister secret lurks in the depths of a government lab.', 49, 'https://streamflix.com/episodes/st_s1e1.jpg', '2016-07-15'),
+(102, 101, 2, 'Chapter Two: The Weirdo on Maple Street', 'Lucas, Mike and Dustin try to talk to the girl they found in the woods. Hopper questions an anxious Joyce about an unsettling phone call.', 46, 'https://streamflix.com/episodes/st_s1e2.jpg', '2016-07-15'),
+(103, 101, 3, 'Chapter Three: Holly, Jolly', 'An increasingly concerned Nancy looks for Barb and finds out what Jonathan\'s been up to. Joyce is convinced Will is trying to talk to her.', 52, 'https://streamflix.com/episodes/st_s1e3.jpg', '2016-07-15'),
+(104, 102, 1, 'Chapter One: MADMAX', 'As the town preps for Halloween, a high-scoring rival shakes things up at the arcade, and a skeptical Hopper inspects a field of rotting pumpkins.', 48, 'https://streamflix.com/episodes/st_s2e1.jpg', '2017-10-27'),
+(105, 102, 2, 'Chapter Two: Trick or Treat, Freak', 'After Will sees something terrible on trick-or-treat night, Mike wonders whether Eleven\'s still out there. Nancy wrestles with the truth about Barb.', 56, 'https://streamflix.com/episodes/st_s2e2.jpg', '2017-10-27'),
+(106, 104, 1, 'Pilot', 'Diagnosed with terminal lung cancer, chemistry teacher Walter White teams up with former student Jesse Pinkman to cook and sell crystal meth.', 58, 'https://streamflix.com/episodes/bb_s1e1.jpg', '2008-01-20'),
+(107, 104, 2, 'Cat\'s in the Bag...', 'After their first drug deal goes terribly wrong, Walt and Jesse are forced to deal with a corpse and a prisoner. Meanwhile, Skyler grows suspicious.', 48, 'https://streamflix.com/episodes/bb_s1e2.jpg', '2008-01-27'),
+(108, 109, 1, 'Wolferton Splash', 'A young Princess Elizabeth marries Prince Philip. As King George VI\'s health worsens, Winston Churchill is elected prime minister for the second time.', 57, 'https://streamflix.com/episodes/crown_s1e1.jpg', '2016-11-04'),
+(109, 109, 2, 'Hyde Park Corner', 'With King George too ill to travel, Elizabeth and Philip embark on a four-continent Commonwealth tour. Party leaders attempt to undermine Churchill.', 61, 'https://streamflix.com/episodes/crown_s1e2.jpg', '2016-11-04'),
+(110, 112, 1, 'The National Anthem', 'Prime Minister Michael Callow faces a shocking dilemma when Princess Susannah, a much-loved member of the Royal Family, is kidnapped.', 44, 'https://streamflix.com/episodes/bm_s1e1.jpg', '2011-12-04'),
+(111, 118, 1, 'Chapter 1', 'In a Kentucky orphanage in the 1950s, a young girl discovers an astonishing talent for chess while struggling with addiction.', 60, 'https://streamflix.com/episodes/qg_s1e1.jpg', '2020-10-23'),
+(112, 118, 2, 'Chapter 2', 'Sent to an orphanage at age 9, Beth develops an uncanny knack for chess and a growing dependence on the green tranquilizers given to the children.', 60, 'https://streamflix.com/episodes/qg_s1e2.jpg', '2020-10-23'),
+(113, 116, 1, 'Chapter One: The Mandalorian', 'A Mandalorian bounty hunter tracks a target for a well-paying client.', 39, 'https://streamflix.com/episodes/mando_s1e1.jpg', '2019-11-12'),
+(114, 116, 2, 'Chapter Two: The Child', 'Target in-hand, The Mandalorian must now contend with scavengers.', 32, 'https://streamflix.com/episodes/mando_s1e2.jpg', '2019-11-15');
 
 INSERT INTO content_genres (content_id, genre_id) VALUES
-(101, 104), -- Shawshank Redemption - Drama
-(102, 106), (102, 109), -- Inception - Sci-Fi, Thriller
-(103, 101), (103, 104), (103, 109), -- Dark Knight - Action, Drama, Thriller
-(104, 103), (104, 104), (104, 109), -- Pulp Fiction - Comedy, Drama, Thriller
-(105, 101), (105, 106), -- Matrix - Action, Sci-Fi
-(106, 104), (106, 109), -- Parasite - Drama, Thriller
-(107, 104), (107, 105), (107, 106), -- Stranger Things - Drama, Horror, Sci-Fi
-(108, 104), (108, 109), -- Breaking Bad - Drama, Thriller
-(109, 104), (109, 114), (109, 115), -- The Crown - Drama, Biography, History
-(110, 104), (110, 106), (110, 109), -- Black Mirror - Drama, Sci-Fi, Thriller
-(111, 104), (111, 108), -- Little Women - Drama, Romance
-(112, 101), (112, 102), (112, 106), -- Mandalorian - Action, Adventure, Sci-Fi
-(113, 101), (113, 102), (113, 106), -- Black Panther - Action, Adventure, Sci-Fi
-(114, 104), -- Queen's Gambit - Drama
-(115, 102), (115, 104), (115, 106); -- Interstellar - Adventure, Drama, Sci-Fi
+(101, 4), -- Shawshank Redemption - Drama
+(101, 3), -- Shawshank Redemption - Crime
+(102, 6), (102, 9), (102, 1), -- Inception - Sci-Fi, Thriller, Action
+(103, 1), (103, 4), (103, 9), (103, 3), -- Dark Knight - Action, Drama, Thriller, Crime
+(104, 3), (104, 4), (104, 9), -- Pulp Fiction - Crime, Drama, Thriller
+(105, 1), (105, 6), (105, 9), -- Matrix - Action, Sci-Fi, Thriller
+(106, 4), (106, 9), (106, 3), -- Parasite - Drama, Thriller, Crime
+(107, 4), (107, 5), (107, 6), (107, 2), -- Stranger Things - Drama, Horror, Sci-Fi, Adventure
+(108, 4), (108, 9), (108, 3), -- Breaking Bad - Drama, Thriller, Crime
+(109, 4), (109, 14), (109, 15), -- The Crown - Drama, Biography, History
+(110, 4), (110, 6), (110, 9), (110, 5), -- Black Mirror - Drama, Sci-Fi, Thriller, Horror
+(111, 4), (111, 8), (111, 15), -- Little Women - Drama, Romance, Historical
+(112, 1), (112, 2), (112, 6), (112, 7), -- Mandalorian - Action, Adventure, Sci-Fi, Fantasy
+(113, 1), (113, 2), (113, 6), (113, 7), -- Black Panther - Action, Adventure, Sci-Fi, Fantasy
+(114, 4), (114, 14), -- Queen's Gambit - Drama, Biography
+(115, 2), (115, 4), (115, 6), (115, 7); -- Interstellar - Adventure, Drama, Sci-Fi, Fantasy
 
 INSERT INTO content_people (content_id, person_id, role, character_name) VALUES
-(101, 108, 'actor', 'Ellis Boyd "Red" Redding'),
-(102, 103, 'actor', 'Dom Cobb'),
-(102, 104, 'director', NULL),
-(103, 104, 'director', NULL),
-(106, 112, 'director', NULL),
-(111, 113, 'director', NULL),
-(111, 114, 'actor', 'Jo March'),
-(111, 115, 'actor', 'Theodore "Laurie" Laurence'),
-(113, 110, 'director', NULL),
-(113, 111, 'actor', 'T\'Challa / Black Panther'),
-(115, 104, 'director', NULL),
-(115, 103, 'actor', 'Joseph Cooper');
+(101, 408, 'actor', 'Ellis Boyd "Red" Redding'),
+(102, 403, 'actor', 'Dom Cobb'),
+(102, 404, 'director', NULL),
+(103, 404, 'director', NULL),
+(106, 412, 'director', NULL),
+(111, 413, 'director', NULL),
+(111, 414, 'actor', 'Jo March'),
+(111, 415, 'actor', 'Theodore "Laurie" Laurence'),
+(113, 410, 'director', NULL),
+(113, 411, 'actor', 'T\'Challa / Black Panther'),
+(115, 404, 'director', NULL),
+(115, 403, 'actor', 'Joseph Cooper');
 
 INSERT INTO subscription_plans (name, description, price_monthly, price_yearly, max_profiles, max_concurrent_streams, video_quality, has_ads, download_enabled) VALUES
 ('Basic', 'Basic plan with limited features', 8.99, 89.99, 1, 1, 'SD', TRUE, FALSE),
@@ -462,166 +457,163 @@ INSERT INTO subscription_plans (name, description, price_monthly, price_yearly, 
 ('Student', 'Discounted plan for students', 4.99, 49.99, 1, 1, 'HD', TRUE, TRUE);
 
 INSERT INTO subscriptions (user_id, plan_id, billing_cycle, start_date, end_date, auto_renewal, status) VALUES
-(101, 103, 'monthly', '2020-01-15', '2021-01-15', TRUE, 'active'),
-(102, 102, 'yearly', '2020-03-10', '2021-03-10', TRUE, 'active'),
-(103, 104, 'monthly', '2020-02-05', '2021-02-05', TRUE, 'active'),
-(104, 103, 'monthly', '2020-04-20', '2021-04-20', TRUE, 'active'),
-(105, 102, 'yearly', '2020-01-30', '2021-01-30', TRUE, 'active'),
-(106, 101, 'monthly', '2020-05-12', '2020-12-12', FALSE, 'cancelled'),
-(107, 103, 'yearly', '2020-06-01', '2021-06-01', TRUE, 'active'),
-(108, 102, 'monthly', '2020-03-15', '2021-03-15', TRUE, 'active'),
-(109, 104, 'yearly', '2020-02-28', '2021-02-28', TRUE, 'active'),
-(110, 103, 'monthly', '2020-07-10', '2021-07-10', TRUE, 'active'),
-(111, 101, 'monthly', '2020-08-05', '2020-11-05', FALSE, 'expired'),
-(112, 102, 'yearly', '2020-04-18', '2021-04-18', TRUE, 'active'),
-(113, 103, 'monthly', '2020-09-22', '2021-09-22', TRUE, 'active'),
-(114, 102, 'monthly', '2020-10-15', '2021-10-15', TRUE, 'active'),
-(115, 104, 'yearly', '2020-05-30', '2021-05-30', TRUE, 'active');
+(201, 3, 'monthly', '2020-01-15', '2021-01-15', TRUE, 'active'),
+(202, 2, 'yearly', '2020-03-10', '2021-03-10', TRUE, 'active'),
+(203, 4, 'monthly', '2020-02-05', '2021-02-05', TRUE, 'active'),
+(204, 3, 'monthly', '2020-04-20', '2021-04-20', TRUE, 'active'),
+(205, 2, 'yearly', '2020-01-30', '2021-01-30', TRUE, 'active'),
+(206, 1, 'monthly', '2020-05-12', '2020-12-12', FALSE, 'cancelled'),
+(207, 3, 'yearly', '2020-06-01', '2021-06-01', TRUE, 'active'),
+(208, 2, 'monthly', '2020-03-15', '2021-03-15', TRUE, 'active'),
+(209, 4, 'yearly', '2020-02-28', '2021-02-28', TRUE, 'active'),
+(210, 3, 'monthly', '2020-07-10', '2021-07-10', TRUE, 'active'),
+(211, 1, 'monthly', '2020-08-05', '2020-11-05', FALSE, 'expired'),
+(212, 2, 'yearly', '2020-04-18', '2021-04-18', TRUE, 'active'),
+(213, 3, 'monthly', '2020-09-22', '2021-09-22', TRUE, 'active'),
+(214, 2, 'monthly', '2020-10-15', '2021-10-15', TRUE, 'active'),
+(215, 4, 'yearly', '2020-05-30', '2021-05-30', TRUE, 'active');
 
 INSERT INTO payment_transactions (subscription_id, amount, currency, payment_method, payment_provider, transaction_date, status, payment_details) VALUES
-(101, 17.99, 'USD', 'credit_card', 'Stripe', '2020-01-15', 'completed', '{"card_last4":"4242", "card_brand":"Visa"}'),
-(101, 17.99, 'USD', 'credit_card', 'Stripe', '2020-02-15', 'completed', '{"card_last4":"4242", "card_brand":"Visa"}'),
-(101, 17.99, 'USD', 'credit_card', 'Stripe', '2020-03-15', 'completed', '{"card_last4":"4242", "card_brand":"Visa"}'),
-(102, 139.99, 'USD', 'paypal', 'PayPal', '2020-03-10', 'completed', '{"paypal_email":"maria@example.com"}'),
-(103, 19.99, 'USD', 'credit_card', 'Stripe', '2020-02-05', 'completed', '{"card_last4":"5678", "card_brand":"Mastercard"}'),
-(103, 19.99, 'USD', 'credit_card', 'Stripe', '2020-03-05', 'completed', '{"card_last4":"5678", "card_brand":"Mastercard"}'),
-(103, 19.99, 'USD', 'credit_card', 'Stripe', '2020-04-05', 'failed', '{"card_last4":"5678", "card_brand":"Mastercard", "error":"Insufficient funds"}'),
-(103, 19.99, 'USD', 'credit_card', 'Stripe', '2020-04-07', 'completed', '{"card_last4":"5678", "card_brand":"Mastercard"}'),
-(104, 17.99, 'USD', 'apple_pay', 'Apple', '2020-04-20', 'completed', '{"device":"iPhone 11"}'),
-(105, 139.99, 'USD', 'google_pay', 'Google', '2020-01-30', 'completed', '{"device":"Pixel 4"}'),
-(106, 8.99, 'USD', 'credit_card', 'Stripe', '2020-05-12', 'completed', '{"card_last4":"9012", "card_brand":"Discover"}'),
-(106, 8.99, 'USD', 'credit_card', 'Stripe', '2020-06-12', 'completed', '{"card_last4":"9012", "card_brand":"Discover"}'),
-(107, 179.99, 'USD', 'paypal', 'PayPal', '2020-06-01', 'completed', '{"paypal_email":"hiroshi@example.com"}'),
-(108, 13.99, 'USD', 'credit_card', 'Stripe', '2020-03-15', 'completed', '{"card_last4":"3456", "card_brand":"Amex"}'),
-(109, 199.99, 'USD', 'bank_transfer', 'ACH', '2020-02-28', 'completed', '{"bank_account":"*****6789"}');
+(1, 17.99, 'USD', 'credit_card', 'Stripe', '2020-01-15', 'completed', '{"card_last4":"4242", "card_brand":"Visa"}'),
+(1, 17.99, 'USD', 'credit_card', 'Stripe', '2020-02-15', 'completed', '{"card_last4":"4242", "card_brand":"Visa"}'),
+(1, 17.99, 'USD', 'credit_card', 'Stripe', '2020-03-15', 'completed', '{"card_last4":"4242", "card_brand":"Visa"}'),
+(2, 139.99, 'USD', 'paypal', 'PayPal', '2020-03-10', 'completed', '{"paypal_email":"maria@example.com"}'),
+(3, 19.99, 'USD', 'credit_card', 'Stripe', '2020-02-05', 'completed', '{"card_last4":"5678", "card_brand":"Mastercard"}'),
+(3, 19.99, 'USD', 'credit_card', 'Stripe', '2020-03-05', 'completed', '{"card_last4":"5678", "card_brand":"Mastercard"}'),
+(3, 19.99, 'USD', 'credit_card', 'Stripe', '2020-04-05', 'failed', '{"card_last4":"5678", "card_brand":"Mastercard", "error":"Insufficient funds"}'),
+(3, 19.99, 'USD', 'credit_card', 'Stripe', '2020-04-07', 'completed', '{"card_last4":"5678", "card_brand":"Mastercard"}'),
+(4, 17.99, 'USD', 'apple_pay', 'Apple', '2020-04-20', 'completed', '{"device":"iPhone 11"}'),
+(5, 139.99, 'USD', 'google_pay', 'Google', '2020-01-30', 'completed', '{"device":"Pixel 4"}'),
+(6, 8.99, 'USD', 'credit_card', 'Stripe', '2020-05-12', 'completed', '{"card_last4":"9012", "card_brand":"Discover"}'),
+(6, 8.99, 'USD', 'credit_card', 'Stripe', '2020-06-12', 'completed', '{"card_last4":"9012", "card_brand":"Discover"}'),
+(7, 179.99, 'USD', 'paypal', 'PayPal', '2020-06-01', 'completed', '{"paypal_email":"hiroshi@example.com"}'),
+(8, 13.99, 'USD', 'credit_card', 'Stripe', '2020-03-15', 'completed', '{"card_last4":"3456", "card_brand":"Amex"}'),
+(9, 199.99, 'USD', 'bank_transfer', 'ACH', '2020-02-28', 'completed', '{"bank_account":"*****6789"}');
 
 INSERT INTO devices (user_id, device_type, device_name, device_model, os_type, os_version, app_version, unique_device_id, is_trusted) VALUES
-(101, 'smartphone', 'Alex\'s iPhone', 'iPhone 12 Pro', 'iOS', '14.2', '2.1.0', 'AABBCCDDEEFF001122', TRUE),
-(101, 'smart_tv', 'Living Room TV', 'Samsung QLED', 'Tizen', '5.0', '3.0.1', 'TVSAM123456789', TRUE),
-(101, 'tablet', 'iPad', 'iPad Pro', 'iOS', '14.1', '2.1.0', 'AABBCCDDEEFF334455', TRUE),
-(102, 'smartphone', 'Maria\'s Phone', 'Samsung Galaxy S20', 'Android', '11', '2.1.0', 'ANDROID987654321', TRUE),
-(102, 'laptop', 'Maria\'s Laptop', 'MacBook Pro', 'macOS', '11.0', '2.0.5', 'MACBOOK123456789', TRUE),
-(103, 'smart_tv', 'Master Bedroom TV', 'LG OLED', 'webOS', '5.0', '3.0.1', 'TVLG987654321', TRUE),
-(103, 'streaming_stick', 'Living Room Roku', 'Roku Ultra', 'Roku OS', '9.4', '2.1.0', 'ROKU123456789', TRUE),
-(104, 'smartphone', 'Sophia\'s Phone', 'iPhone 11', 'iOS', '14.0', '2.1.0', 'AABBCCDDEEFF667788', TRUE),
-(105, 'game_console', 'PlayStation', 'PlayStation 5', 'PlayStation OS', '5.0', '1.0.2', 'PS5123456789', TRUE),
-(106, 'smartphone', 'Luisa\'s Phone', 'Xiaomi Mi 10', 'Android', '10', '2.0.8', 'ANDROID123456789', TRUE),
-(107, 'smart_tv', 'Sony TV', 'Sony Bravia', 'Android TV', '9.0', '2.1.0', 'TVSONY123456789', TRUE),
-(108, 'tablet', 'Emma\'s iPad', 'iPad Air', 'iOS', '14.0', '2.1.0', 'AABBCCDDEEFF998877', TRUE),
-(109, 'laptop', 'Raj\'s Laptop', 'Dell XPS', 'Windows', '10', '2.0.5', 'WINDOWS123456789', TRUE),
-(110, 'smartphone', 'Anna\'s Phone', 'Google Pixel 5', 'Android', '11', '2.1.0', 'ANDROID567891234', TRUE),
-(111, 'smart_tv', 'Carlos\'s TV', 'Samsung QLED', 'Tizen', '4.0', '3.0.0', 'TVSAM567891234', TRUE),
-(112, 'laptop', 'Olga\'s Laptop', 'Lenovo ThinkPad', 'Windows', '10', '2.0.5', 'WINDOWS567891234', TRUE),
-(113, 'smartphone', 'Chen\'s Phone', 'Huawei P40', 'Android', '10', '2.0.8', 'ANDROID234567891', TRUE),
-(114, 'tablet', 'Fatima\'s Tablet', 'Samsung Galaxy Tab S7', 'Android', '10', '2.0.8', 'ANDROID345678912', TRUE),
-(115, 'smart_tv', 'Pierre\'s TV', 'LG OLED', 'webOS', '5.0', '3.0.1', 'TVLG234567891', TRUE);
+(201, 'smartphone', 'Alex\'s iPhone', 'iPhone 12 Pro', 'iOS', '14.2', '2.1.0', 'AABBCCDDEEFF001122', TRUE),
+(201, 'smart_tv', 'Living Room TV', 'Samsung QLED', 'Tizen', '5.0', '3.0.1', 'TVSAM123456789', TRUE),
+(201, 'tablet', 'iPad', 'iPad Pro', 'iOS', '14.1', '2.1.0', 'AABBCCDDEEFF334455', TRUE),
+(202, 'smartphone', 'Maria\'s Phone', 'Samsung Galaxy S20', 'Android', '11', '2.1.0', 'ANDROID987654321', TRUE),
+(202, 'laptop', 'Maria\'s Laptop', 'MacBook Pro', 'macOS', '11.0', '2.0.5', 'MACBOOK123456789', TRUE),
+(203, 'smart_tv', 'Master Bedroom TV', 'LG OLED', 'webOS', '5.0', '3.0.1', 'TVLG987654321', TRUE),
+(203, 'streaming_stick', 'Living Room Roku', 'Roku Ultra', 'Roku OS', '9.4', '2.1.0', 'ROKU123456789', TRUE),
+(204, 'smartphone', 'Sophia\'s Phone', 'iPhone 11', 'iOS', '14.0', '2.1.0', 'AABBCCDDEEFF667788', TRUE),
+(205, 'game_console', 'PlayStation', 'PlayStation 5', 'PlayStation OS', '5.0', '1.0.2', 'PS5123456789', TRUE),
+(206, 'smartphone', 'Luisa\'s Phone', 'Xiaomi Mi 10', 'Android', '10', '2.0.8', 'ANDROID123456789', TRUE),
+(207, 'smart_tv', 'Sony TV', 'Sony Bravia', 'Android TV', '9.0', '2.1.0', 'TVSONY123456789', TRUE),
+(208, 'tablet', 'Emma\'s iPad', 'iPad Air', 'iOS', '14.0', '2.1.0', 'AABBCCDDEEFF998877', TRUE),
+(209, 'laptop', 'Raj\'s Laptop', 'Dell XPS', 'Windows', '10', '2.0.5', 'WINDOWS123456789', TRUE),
+(210, 'smartphone', 'Anna\'s Phone', 'Google Pixel 5', 'Android', '11', '2.1.0', 'ANDROID567891234', TRUE),
+(211, 'smart_tv', 'Carlos\'s TV', 'Samsung QLED', 'Tizen', '4.0', '3.0.0', 'TVSAM567891234', TRUE),
+(212, 'laptop', 'Olga\'s Laptop', 'Lenovo ThinkPad', 'Windows', '10', '2.0.5', 'WINDOWS567891234', TRUE),
+(213, 'smartphone', 'Chen\'s Phone', 'Huawei P40', 'Android', '10', '2.0.8', 'ANDROID234567891', TRUE),
+(214, 'tablet', 'Fatima\'s Tablet', 'Samsung Galaxy Tab S7', 'Android', '10', '2.0.8', 'ANDROID345678912', TRUE),
+(215, 'smart_tv', 'Pierre\'s TV', 'LG OLED', 'webOS', '5.0', '3.0.1', 'TVLG234567891', TRUE);
 
 INSERT INTO device_sessions (device_id, profile_id, ip_address, location, login_time, logout_time, is_active) VALUES
-(101, 101, '192.168.1.1', 'New York, USA', '2020-10-01 19:30:00', '2020-10-01 21:45:00', FALSE),
-(101, 101, '192.168.1.1', 'New York, USA', '2020-10-02 20:00:00', '2020-10-02 22:30:00', FALSE),
-(102, 101, '192.168.1.1', 'New York, USA', '2020-10-03 18:15:00', '2020-10-03 20:45:00', FALSE),
-(103, 102, '192.168.1.1', 'New York, USA', '2020-10-04 16:00:00', '2020-10-04 17:30:00', FALSE),
-(104, 103, '192.168.2.1', 'Madrid, Spain', '2020-10-01 14:00:00', '2020-10-01 16:30:00', FALSE),
-(105, 103, '192.168.2.1', 'Madrid, Spain', '2020-10-02 21:00:00', '2020-10-02 23:00:00', FALSE),
-(106, 105, '192.168.3.1', 'London, UK', '2020-10-01 20:00:00', '2020-10-01 22:00:00', FALSE),
-(107, 106, '192.168.3.1', 'London, UK', '2020-10-02 19:00:00', '2020-10-02 21:30:00', FALSE),
-(108, 108, '192.168.4.1', 'Seoul, South Korea', '2020-10-01 18:00:00', '2020-10-01 20:00:00', FALSE),
-(109, 109, '192.168.5.1', 'Cairo, Egypt', '2020-10-01 21:00:00', '2020-10-01 23:00:00', FALSE),
-(110, 111, '192.168.6.1', 'Mexico City, Mexico', '2020-10-01 19:00:00', '2020-10-01 21:00:00', FALSE),
-(111, 112, '192.168.7.1', 'Tokyo, Japan', '2020-10-01 20:00:00', '2020-10-01 22:00:00', FALSE),
-(112, 114, '192.168.8.1', 'Sydney, Australia', '2020-10-01 19:30:00', '2020-10-01 21:30:00', FALSE),
-(113, 115, '192.168.9.1', 'Mumbai, India', '2020-10-01 18:30:00', '2020-10-01 20:30:00', FALSE),
-(114, 118, '192.168.10.1', 'Berlin, Germany', '2020-10-01 20:30:00', '2020-10-01 22:30:00', FALSE),
-(115, 120, '192.168.11.1', 'São Paulo, Brazil', '2020-10-01 19:00:00', '2020-10-01 21:00:00', FALSE);
+(101, 301, '192.168.1.1', 'New York, USA', '2020-10-01 19:30:00', '2020-10-01 21:45:00', FALSE),
+(101, 301, '192.168.1.1', 'New York, USA', '2020-10-02 20:00:00', '2020-10-02 22:30:00', FALSE),
+(102, 301, '192.168.1.1', 'New York, USA', '2020-10-03 18:15:00', '2020-10-03 20:45:00', FALSE),
+(103, 302, '192.168.1.1', 'New York, USA', '2020-10-04 16:00:00', '2020-10-04 17:30:00', FALSE),
+(104, 303, '192.168.2.1', 'Madrid, Spain', '2020-10-01 14:00:00', '2020-10-01 16:30:00', FALSE),
+(105, 303, '192.168.2.1', 'Madrid, Spain', '2020-10-02 21:00:00', '2020-10-02 23:00:00', FALSE),
+(106, 305, '192.168.3.1', 'London, UK', '2020-10-01 20:00:00', '2020-10-01 22:00:00', FALSE),
+(107, 306, '192.168.3.1', 'London, UK', '2020-10-02 19:00:00', '2020-10-02 21:30:00', FALSE),
+(108, 308, '192.168.4.1', 'Seoul, South Korea', '2020-10-01 18:00:00', '2020-10-01 20:00:00', FALSE),
+(109, 309, '192.168.5.1', 'Cairo, Egypt', '2020-10-01 21:00:00', '2020-10-01 23:00:00', FALSE),
+(110, 311, '192.168.6.1', 'Mexico City, Mexico', '2020-10-01 19:00:00', '2020-10-01 21:00:00', FALSE),
+(111, 312, '192.168.7.1', 'Tokyo, Japan', '2020-10-01 20:00:00', '2020-10-01 22:00:00', FALSE),
+(112, 314, '192.168.8.1', 'Sydney, Australia', '2020-10-01 19:30:00', '2020-10-01 21:30:00', FALSE),
+(113, 315, '192.168.9.1', 'Mumbai, India', '2020-10-01 18:30:00', '2020-10-01 20:30:00', FALSE),
+(114, 318, '192.168.10.1', 'Berlin, Germany', '2020-10-01 20:30:00', '2020-10-01 22:30:00', FALSE),
+(115, 320, '192.168.11.1', 'São Paulo, Brazil', '2020-10-01 19:00:00', '2020-10-01 21:00:00', FALSE);
 
 INSERT INTO viewing_history (profile_id, content_id, episode_id, start_time, end_time, watch_duration_seconds, percentage_watched, device_id, ip_address) VALUES
-(101, 101, NULL, '2020-10-01 19:30:00', '2020-10-01 21:52:00', 8520, 100.0, 'AABBCCDDEEFF001122', '192.168.1.1'),
-(101, 102, NULL, '2020-10-02 20:00:00', '2020-10-02 22:28:00', 8880, 100.0, 'AABBCCDDEEFF001122', '192.168.1.1'),
-(101, NULL, 201, '2020-10-03 18:15:00', '2020-10-03 19:04:00', 2940, 100.0, 'TVSAM123456789', '192.168.1.1'),
-(101, NULL, 202, '2020-10-03 19:05:00', '2020-10-03 19:51:00', 2760, 100.0, 'TVSAM123456789', '192.168.1.1'),
-(102, 113, NULL, '2020-10-04 16:00:00', '2020-10-04 17:30:00', 5400, 67.2, 'AABBCCDDEEFF334455', '192.168.1.1'),
-(103, 106, NULL, '2020-10-01 14:00:00', '2020-10-01 16:12:00', 7920, 100.0, 'ANDROID987654321', '192.168.2.1'),
-(103, NULL, 206, '2020-10-02 21:00:00', '2020-10-02 21:58:00', 3480, 100.0, 'MACBOOK123456789', '192.168.2.1'),
-(105, 103, NULL, '2020-10-01 20:00:00', '2020-10-01 22:32:00', 9120, 100.0, 'TVLG987654321', '192.168.3.1'),
-(106, NULL, 209, '2020-10-02 19:00:00', '2020-10-02 20:01:00', 3660, 100.0, 'ROKU123456789', '192.168.3.1'),
-(108, 115, NULL, '2020-10-01 18:00:00', '2020-10-01 20:49:00', 10140, 100.0, 'AABBCCDDEEFF667788', '192.168.4.1'),
-(109, 104, NULL, '2020-10-01 21:00:00', '2020-10-01 23:34:00', 9240, 100.0, 'PS5123456789', '192.168.5.1'),
-(111, NULL, 213, '2020-10-01 19:00:00', '2020-10-01 19:39:00', 2340, 100.0, 'ANDROID123456789', '192.168.6.1'),
-(112, NULL, 214, '2020-10-01 20:00:00', '2020-10-01 20:32:00', 1920, 100.0, 'TVSONY123456789', '192.168.7.1'),
-(114, 111, NULL, '2020-10-01 19:30:00', '2020-10-01 21:45:00', 8100, 100.0, 'AABBCCDDEEFF998877', '192.168.8.1'),
-(115, 105, NULL, '2020-10-01 18:30:00', '2020-10-01 20:46:00', 8160, 100.0, 'WINDOWS123456789', '192.168.9.1');
+(301, 101, NULL, '2020-10-01 19:30:00', '2020-10-01 21:52:00', 8520, 100.0, 'AABBCCDDEEFF001122', '192.168.1.1'),
+(301, 102, NULL, '2020-10-02 20:00:00', '2020-10-02 22:28:00', 8880, 100.0, 'AABBCCDDEEFF001122', '192.168.1.1'),
+(301, NULL, 101, '2020-10-03 18:15:00', '2020-10-03 19:04:00', 2940, 100.0, 'TVSAM123456789', '192.168.1.1'),
+(301, NULL, 102, '2020-10-03 19:05:00', '2020-10-03 19:51:00', 2760, 100.0, 'TVSAM123456789', '192.168.1.1'),
+(302, 113, NULL, '2020-10-04 16:00:00', '2020-10-04 17:30:00', 5400, 67.2, 'AABBCCDDEEFF334455', '192.168.1.1'),
+(303, 106, NULL, '2020-10-01 14:00:00', '2020-10-01 16:12:00', 7920, 100.0, 'ANDROID987654321', '192.168.2.1'),
+(303, NULL, 106, '2020-10-02 21:00:00', '2020-10-02 21:58:00', 3480, 100.0, 'MACBOOK123456789', '192.168.2.1'),
+(305, 103, NULL, '2020-10-01 20:00:00', '2020-10-01 22:32:00', 9120, 100.0, 'TVLG987654321', '192.168.3.1'),
+(306, NULL, 109, '2020-10-02 19:00:00', '2020-10-02 20:01:00', 3660, 100.0, 'ROKU123456789', '192.168.3.1'),
+(308, 115, NULL, '2020-10-01 18:00:00', '2020-10-01 20:49:00', 10140, 100.0, 'AABBCCDDEEFF667788', '192.168.4.1'),
+(309, 104, NULL, '2020-10-01 21:00:00', '2020-10-01 23:34:00', 9240, 100.0, 'PS5123456789', '192.168.5.1'),
+(311, NULL, 113, '2020-10-01 19:00:00', '2020-10-01 19:39:00', 2340, 100.0, 'ANDROID123456789', '192.168.6.1'),
+(312, NULL, 114, '2020-10-01 20:00:00', '2020-10-01 20:32:00', 1920, 100.0, 'TVSONY123456789', '192.168.7.1'),
+(314, 111, NULL, '2020-10-01 19:30:00', '2020-10-01 21:45:00', 8100, 100.0, 'AABBCCDDEEFF998877', '192.168.8.1'),
+(315, 105, NULL, '2020-10-01 18:30:00', '2020-10-01 20:46:00', 8160, 100.0, 'WINDOWS123456789', '192.168.9.1');
 
 INSERT INTO watchlist_items (profile_id, content_id) VALUES
-(101, 103),
-(101, 106),
-(101, 113),
-(102, 107),
-(103, 108),
-(103, 110),
-(105, 104),
-(105, 115),
-(106, 109),
-(108, 102),
-(109, 107),
-(111, 112),
-(112, 114),
-(114, 105),
-(115, 101);
-
+(301, 103),
+(301, 106),
+(301, 113),
+(302, 107),
+(303, 108),
+(303, 110),
+(305, 104),
+(305, 115),
+(306, 109),
+(308, 102),
+(309, 107),
+(311, 112),
+(312, 114),
+(314, 105),
+(315, 101);
 
 INSERT INTO content_reviews (profile_id, content_id, rating, review_text, contains_spoilers) VALUES
-(101, 101, 10, 'One of the greatest movies ever made. The story of hope and redemption is timeless.', FALSE),
-(101, 102, 9, 'Mind-bending and visually stunning. Christopher Nolan at his best.', FALSE),
-(103, 106, 10, 'A masterpiece that perfectly blends social commentary with suspense. Deserved the Oscar.', FALSE),
-(105, 103, 9, 'Heath Ledger\'s Joker is the greatest villain performance of all time.', FALSE),
-(106, 109, 8, 'Beautifully shot and well-acted. A fascinating look at the British monarchy.', FALSE),
-(108, 115, 9, 'A breathtaking space epic with heart. The visuals and score are outstanding.', FALSE),
-(109, 104, 10, 'Tarantino\'s masterpiece. The dialogue and non-linear storytelling are revolutionary.', FALSE),
-(111, 112, 8, 'A fresh take on the Star Wars universe with a compelling protagonist.', FALSE),
-(112, 114, 9, 'Anya Taylor-Joy is phenomenal. The chess scenes are surprisingly thrilling.', FALSE),
-(114, 111, 8, 'Greta Gerwig\'s adaptation brings new life to this classic story.', FALSE),
-(115, 105, 9, 'Revolutionary when it came out and still holds up today. The action scenes are iconic.', FALSE),
-(103, 108, 10, 'Bryan Cranston\'s performance is one of the best in television history.', FALSE),
-(105, 107, 8, 'A perfect blend of 80s nostalgia and supernatural thrills.', FALSE),
-(109, 113, 8, 'A groundbreaking superhero film with cultural significance and great action.', FALSE),
-(101, 110, 7, 'Some episodes are brilliant, others are too disturbing. Always thought-provoking though.', TRUE);
+(301, 101, 9, 'One of the greatest movies ever made. The story of hope and redemption is timeless.', FALSE),
+(301, 109, 9, 'Mind-bending and visually stunning. Christopher Nolan at his best.', FALSE),
+(303, 106, 10, 'A masterpiece that perfectly blends social commentary with suspense. Deserved the Oscar.', FALSE),
+(305, 103, 9, 'Heath Ledger\'s Joker is the greatest villain performance of all time.', FALSE),
+(306, 109, 8, 'Beautifully shot and well-acted. A fascinating look at the British monarchy.', FALSE),
+(308, 115, 9, 'A breathtaking space epic with heart. The visuals and score are outstanding.', FALSE),
+(309, 104, 10, 'Tarantino\'s masterpiece. The dialogue and non-linear storytelling are revolutionary.', FALSE),
+(311, 112, 8, 'A fresh take on the Star Wars universe with a compelling protagonist.', FALSE),
+(312, 114, 9, 'Anya Taylor-Joy is phenomenal. The chess scenes are surprisingly thrilling.', FALSE),
+(314, 111, 8, 'Greta Gerwig\'s adaptation brings new life to this classic story.', FALSE),
+(315, 105, 9, 'Revolutionary when it came out and still holds up today. The action scenes are iconic.', FALSE),
+(303, 108, 10, 'Bryan Cranston\'s performance is one of the best in television history.', FALSE),
+(305, 107, 8, 'A perfect blend of 80s nostalgia and supernatural thrills.', FALSE),
+(309, 113, 8, 'A groundbreaking superhero film with cultural significance and great action.', FALSE),
+(301, 110, 7, 'Some episodes are brilliant, others are too disturbing. Always thought-provoking though.', TRUE);
 
 INSERT INTO content_recommendations (source_content_id, recommended_content_id, similarity_score, recommendation_reason) VALUES
-(101, 104, 0.85, 'Because you watched The Shawshank Redemption'),
-(102, 115, 0.90, 'Because you watched Inception'),
-(102, 105, 0.80, 'Because you watched Inception'),
-(103, 102, 0.75, 'Because you watched The Dark Knight'),
-(104, 101, 0.85, 'Because you watched Pulp Fiction'),
-(105, 102, 0.80, 'Because you watched The Matrix'),
-(106, 104, 0.70, 'Because you watched Parasite'),
-(107, 110, 0.85, 'Because you watched Stranger Things'),
-(108, 109, 0.65, 'Because you watched Breaking Bad'),
-(109, 108, 0.65, 'Because you watched The Crown'),
-(110, 107, 0.85, 'Because you watched Black Mirror'),
-(111, 114, 0.60, 'Because you watched Little Women'),
-(112, 113, 0.75, 'Because you watched The Mandalorian'),
-(113, 112, 0.75, 'Because you watched Black Panther'),
-(114, 111, 0.60, 'Because you watched The Queen\'s Gambit'),
-(115, 102, 0.90, 'Because you watched Interstellar');
-
+(1, 4, 0.85, 'Because you watched The Shawshank Redemption'),
+(2, 15, 0.90, 'Because you watched Inception'),
+(2, 5, 0.80, 'Because you watched Inception'),
+(3, 2, 0.75, 'Because you watched The Dark Knight'),
+(4, 1, 0.85, 'Because you watched Pulp Fiction'),
+(5, 2, 0.80, 'Because you watched The Matrix'),
+(6, 4, 0.70, 'Because you watched Parasite'),
+(7, 10, 0.85, 'Because you watched Stranger Things'),
+(8, 9, 0.65, 'Because you watched Breaking Bad'),
+(9, 8, 0.65, 'Because you watched The Crown'),
+(10, 7, 0.85, 'Because you watched Black Mirror'),
+(11, 14, 0.60, 'Because you watched Little Women'),
+(12, 13, 0.75, 'Because you watched The Mandalorian'),
+(13, 12, 0.75, 'Because you watched Black Panther'),
+(14, 11, 0.60, 'Because you watched The Queen\'s Gambit'),
+(15, 2, 0.90, 'Because you watched Interstellar');
 
 INSERT INTO user_recommendations (profile_id, content_id, score, recommendation_reason) VALUES
-(101, 103, 0.95, 'Top Pick For You'),
-(101, 108, 0.85, 'Because you watched Inception'),
-(101, 110, 0.75, 'Because you like Sci-Fi'),
-(102, 113, 0.80, 'Because you added Stranger Things to your list'),
-(103, 102, 0.90, 'Top Pick For You'),
-(103, 115, 0.85, 'Because you watched Parasite'),
-(105, 106, 0.95, 'Because you watched The Dark Knight'),
-(105, 102, 0.90, 'Because you like Christopher Nolan films'),
-(106, 108, 0.85, 'Because you watched The Crown'),
-(108, 103, 0.80, 'Because you watched Interstellar'),
-(109, 115, 0.85, 'Because you watched Pulp Fiction'),
-(111, 107, 0.90, 'Because you watched The Mandalorian'),
-(112, 110, 0.75, 'Because you watched The Queen\'s Gambit'),
-(114, 102, 0.85, 'Because you watched Little Women'),
-(115, 115, 0.95, 'Because you watched The Matrix');
-
+(301, 103, 0.95, 'Top Pick For You'),
+(301, 108, 0.85, 'Because you watched Inception'),
+(301, 110, 0.75, 'Because you like Sci-Fi'),
+(302, 113, 0.80, 'Because you added Stranger Things to your list'),
+(303, 102, 0.90, 'Top Pick For You'),
+(303, 115, 0.85, 'Because you watched Parasite'),
+(305, 106, 0.95, 'Because you watched The Dark Knight'),
+(305, 102, 0.90, 'Because you like Christopher Nolan films'),
+(306, 108, 0.85, 'Because you watched The Crown'),
+(308, 103, 0.80, 'Because you watched Interstellar'),
+(309, 115, 0.85, 'Because you watched Pulp Fiction'),
+(311, 107, 0.90, 'Because you watched The Mandalorian'),
+(312, 110, 0.75, 'Because you watched The Queen\'s Gambit'),
+(314, 102, 0.85, 'Because you watched Little Women'),
+(315, 115, 0.95, 'Because you watched The Matrix');
 
 DELIMITER //
 CREATE PROCEDURE update_content_recommendations()
@@ -922,7 +914,6 @@ BEGIN
 END //
 DELIMITER ;
 
-
 ALTER TABLE users COMMENT = 'Stores user account information';
 ALTER TABLE profiles COMMENT = 'Stores user profiles (multiple profiles per account)';
 ALTER TABLE content COMMENT = 'Stores movies and TV shows metadata';
@@ -938,4 +929,3 @@ ALTER TABLE devices COMMENT = 'Stores user devices used for streaming';
 ALTER TABLE device_sessions COMMENT = 'Tracks user login sessions on devices';
 ALTER TABLE user_recommendations COMMENT = 'Stores personalized content recommendations for users';
 ALTER TABLE content_recommendations COMMENT = 'Stores content-based recommendations';
-
